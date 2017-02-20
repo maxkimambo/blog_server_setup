@@ -27,19 +27,28 @@ services:
         image: mysql
         volumes: 
             - /data/server/data/mysql:/var/lib/mysql
-        # ports: 
-        #     - 3306:3306 
+       
         environment: 
             - MYSQL_ROOT_PASSWORD=$mysql_pass
-   
+   gitlab: 
+        image: gitlab/gitlab-ce:latest 
+        volumes: 
+            - /data/server/gitlab/config:/etc/gitlab
+            - /data/server/gitlab/logs:/var/log/gitlab
+            - /data/server/gitlab/data:/var/opt/gitlab
+        ports: 
+            - 8080:80 
+        environment: 
+            - hostname www.kimambo.de/code
+        restart_policy:
+            condition: on-failure
+            delay: 5s
+            max_attempts: 5
+            window: 120s
+
     # torrent: 
     #     image: lerenn/transmission-seedbox
     #     volumes: 
     #         - /data/server/downloads:/data
     #     ports: 
     #         - 9091:9091 
-
-
-#Ooj1Ahy5
-
-# 192.99.12.197
