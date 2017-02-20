@@ -40,12 +40,7 @@ services:
             - 8080:80 
         environment: 
             - hostname www.kimambo.de/code
-        restart_policy:
-            condition: on-failure
-            delay: 5s
-            max_attempts: 5
-            window: 120s
-
+        
     # torrent: 
     #     image: lerenn/transmission-seedbox
     #     volumes: 
