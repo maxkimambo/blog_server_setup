@@ -30,7 +30,7 @@ services:
        
         environment: 
             - MYSQL_ROOT_PASSWORD=$mysql_pass
-   gitlab: 
+    gitlab: 
         image: gitlab/gitlab-ce:latest 
         volumes: 
             - /data/server/gitlab/config:/etc/gitlab
