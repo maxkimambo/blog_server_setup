@@ -38,7 +38,7 @@ services:
             - /data/server/gitlab/logs:/var/log/gitlab
             - /data/server/gitlab/data:/var/opt/gitlab
         ports: 
-            - 8080:8080
+            - 8080:80
         environment: 
             - hostname www.kimambo.de/git 
 
