@@ -6,7 +6,8 @@ services:
             - /data/server/conf/nginx:/etc/nginx/conf.d
             - /data/server/conf/certs:/etc/nginx/ssl
         links: 
-            - blog 
+            - blog
+            - gitlab 
         ports: 
             - 443:443 
             - 80:80 
@@ -36,11 +37,13 @@ services:
             - /data/server/gitlab/config:/etc/gitlab
             - /data/server/gitlab/logs:/var/log/gitlab
             - /data/server/gitlab/data:/var/opt/gitlab
-        ports: 
-            - 8080:80 
+        # ports: 
+        #     - 8080:80 
         environment: 
-            - hostname www.kimambo.de/code
-        
+            - hostname www.kimambo.de/git 
+            
+
+            
     # torrent: 
     #     image: lerenn/transmission-seedbox
     #     volumes: 
