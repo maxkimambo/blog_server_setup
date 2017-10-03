@@ -1,13 +1,11 @@
-version: '2'
+version: '3.3'
 services:
     web: 
         image: nginx 
         volumes: 
             - /data/server/conf/nginx:/etc/nginx/conf.d
             - /data/server/conf/certs:/etc/nginx/ssl
-        links: 
-            - blog
-            - gitlab 
+        
         ports: 
             - 443:443 
             - 80:80 
@@ -15,9 +13,7 @@ services:
     blog: 
         image: ghost 
         volumes: 
-            - /data/server/data/blog:/var/lib/ghost
-        links:
-            - db
+            - /data/server/data/blog:/var/lib/ghost/content
           
         depends_on: 
             - db 
@@ -31,22 +27,4 @@ services:
        
         environment: 
             - MYSQL_ROOT_PASSWORD=$mysql_pass
-    gitlab: 
-        image: gitlab/gitlab-ce:latest 
-        volumes: 
-            - /data/server/gitlab/config:/etc/gitlab
-            - /data/server/gitlab/logs:/var/log/gitlab
-            - /data/server/gitlab/data:/var/opt/gitlab
-        ports: 
-            - 8080:80
-        environment: 
-            - hostname www.kimambo.de/git 
-
-
-            
-    # torrent: 
-    #     image: lerenn/transmission-seedbox
-    #     volumes: 
-    #         - /data/server/downloads:/data
-    #     ports: 
-    #         - 9091:9091 
+    
