@@ -4,17 +4,17 @@ services:
         image: nginx 
         volumes: 
             - /data/server/conf/nginx:/etc/nginx/conf.d
-            - /data/server/conf/certs:/etc/nginx/ssl
-        
+            - /data/server/conf/certs:/etc/nginx/ssl       
         ports: 
             - 443:443 
-            - 80:80 
+            - 80:80
+        depends_on:
+            - blog 
                 
     blog: 
         image: ghost:0.11.10
         volumes: 
-            - /data/server/data/blog:/var/lib/ghost
-          
+            - /data/server/data/blog:/var/lib/ghost   
         depends_on: 
             - db 
         ports: 
@@ -24,7 +24,6 @@ services:
         image: mysql
         volumes: 
             - /data/server/data/mysql:/var/lib/mysql
-       
         environment: 
             - MYSQL_ROOT_PASSWORD=$mysql_pass
     
