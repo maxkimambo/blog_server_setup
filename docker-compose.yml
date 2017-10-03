@@ -13,7 +13,7 @@ services:
     blog: 
         image: ghost:0.11.10
         volumes: 
-            - /data/server/data/blog:/var/lib/ghost/content
+            - /data/server/data/blog:/var/lib/ghost
           
         depends_on: 
             - db 
