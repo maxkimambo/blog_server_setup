@@ -1,0 +1,13 @@
+version: '3'
+services:     
+    gitlab: 
+      image:  gitlab/gitlab-ce:latest
+      volumes: 
+        - /data/server/gitlab/config:/etc/gitlab
+        - /data/server/gitlab/logs:/var/log/gitlab
+        - /data/server/gitlab/data:/var/opt/gitlab
+      ports: 
+        - 8443:443
+        - 8080:80 
+      environment: 
+        - hostname=gitlab.kimambo.de
