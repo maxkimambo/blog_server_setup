@@ -27,3 +27,7 @@ services:
         environment: 
             - MYSQL_ROOT_PASSWORD=$mysql_pass
     
+    actions: 
+        image: maxkimambo/assistant-actions
+        
+        
