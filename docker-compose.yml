@@ -27,7 +27,7 @@ services:
             - /data/server/data/moritzblog:/var/lib/ghost/content
         environment:
             database__client: mysql
-            database__connection__host: db
+            database__connection__host: db-fantasie
             database__connection__user: root
             database__connection__password: $mysql_pass
             database__connection__database: fantasie
