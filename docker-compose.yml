@@ -1,33 +1,41 @@
-version: '3'
+version: '2'
 services:
     web: 
         image: nginx 
         volumes: 
             - /data/server/conf/nginx:/etc/nginx/conf.d
-            - /data/server/conf/certs:/etc/nginx/ssl       
+            - /data/server/conf/certs:/etc/nginx/ssl
+        links: 
+            - blog 
         ports: 
             - 443:443 
-            - 80:80
-        depends_on:
-            - blog 
+            - 80:80 
                 
     blog: 
-        image: ghost:0.11.10
+        image: ghost 
         volumes: 
-            - /data/server/data/blog:/var/lib/ghost   
+            - /data/server/data/blog:/var/lib/ghost
+        links:
+            - db
+          
         depends_on: 
             - db 
-        ports: 
-            - 2368:2368
-    
+        
+    fantasie: 
+        image: ghost:latest
+        volumes: 
+            - /data/server/data/moritzblog:/var/lib/ghost
+        environment:
+            database__client: mysql
+            database__connection__host: db
+            database__connection__user: root
+            database__connection__password: $mysql_pass
+            database__connection__database: fantasie
     db: 
         image: mysql
         volumes: 
             - /data/server/data/mysql:/var/lib/mysql
+        
+       
         environment: 
             - MYSQL_ROOT_PASSWORD=$mysql_pass
-    
-    actions: 
-        image: maxkimambo/assistant-actions
-        
-        
