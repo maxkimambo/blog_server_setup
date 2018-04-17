@@ -26,7 +26,7 @@ services:
         volumes: 
             - /data/server/data/moritzblog:/var/lib/ghost/content
         environment:
-            url: fantasie-geschichten.de
+            url: http://www.fantasie-geschichten.de
             server: 0.0.0.0:2368
             database__client: mysql
             database__connection__host: db-fantasie
