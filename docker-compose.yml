@@ -25,9 +25,10 @@ services:
         image: ghost:latest
         volumes: 
             - /data/server/data/moritzblog:/var/lib/ghost/content
+            - /data/server/data/moritzblog/ghostium:/var/lib/ghost/content.orig/themes/ghostium
         environment:
             url: http://www.fantasie-geschichten.de
-            server: 0.0.0.0:2368
+            server: 0.0.0.0
             database__client: mysql
             database__connection__host: db-fantasie
             database__connection__user: root
@@ -51,3 +52,6 @@ services:
         environment: 
             - MYSQL_ROOT_PASSWORD=$mysql_pass
             - MYSQL_DATABASE=fantasie
+    spark: 
+        image: maxkimambo/sparknetworks:latest 
+        
