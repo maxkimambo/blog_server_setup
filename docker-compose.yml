@@ -25,7 +25,6 @@ services:
         image: ghost:latest
         volumes: 
             - /data/server/data/moritzblog:/var/lib/ghost/content
-            - /data/server/data/moritzblog/ghostium:/var/lib/ghost/content.orig/themes/ghostium
         environment:
             url: http://www.fantasie-geschichten.de
             database__client: mysql
