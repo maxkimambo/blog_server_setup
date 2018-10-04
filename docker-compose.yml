@@ -4,7 +4,7 @@ services:
         image: nginx 
         volumes: 
             - /data/server/blog_server_setup/conf/nginx:/etc/nginx/conf.d
-            - /data/server/blog_server_setup/certs/live:/etc/nginx/ssl
+            - /data/server/blog_server_setup/certs:/etc/nginx/ssl
             - /data/server/well-known/:/var/www
 
         links: 
