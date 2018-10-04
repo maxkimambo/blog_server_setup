@@ -1,10 +1,11 @@
-version: '2'
+version: '3'
 services:
     web: 
         image: nginx 
         volumes: 
             - /data/server/conf/nginx:/etc/nginx/conf.d
             - /data/server/conf/certs:/etc/nginx/ssl
+            - /data/server/well-known/:/usr/share/nginx/html
         links: 
             - blog 
         ports: 
@@ -50,5 +51,3 @@ services:
         environment: 
             - MYSQL_ROOT_PASSWORD=$mysql_pass
             - MYSQL_DATABASE=fantasie
-    # spark: 
-    #     image: maxkimambo/sparknetworks:latest 
