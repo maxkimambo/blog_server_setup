@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run --rm  -v "$(pwd)/certs/log:/var/log/letsencrypt" -v "/data/server/well-known:/var/www/" -v "$(pwd)/certs:/etc/letsencrypt" -v "$(pwd)/certs/lib:/var/lib/letsencrypt" lojzik/letsencrypt renew
