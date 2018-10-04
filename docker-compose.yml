@@ -5,7 +5,8 @@ services:
         volumes: 
             - /data/server/conf/nginx:/etc/nginx/conf.d
             - /data/server/conf/certs:/etc/nginx/ssl
-            - /data/server/well-known/:/usr/share/nginx/html
+            - /data/server/well-known/:/var/www
+
         links: 
             - blog 
         ports: 
